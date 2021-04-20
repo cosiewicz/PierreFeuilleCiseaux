@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameActivity">
+
+    <TextView
+        android:id="@+id/textView_ScoreTXT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Score : "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_ScoreValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintStart_toEndOf="@+id/textView_ScoreTXT"
+        app:layout_constraintTop_toTopOf="@+id/textView_ScoreTXT" />
+
+    <TextView
+        android:id="@+id/textView_NomTXT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nom du joueur : "
+        app:layout_constraintBottom_toTopOf="@+id/textView_ScoreTXT"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_NameValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nom "
+        app:layout_constraintStart_toEndOf="@+id/textView_NomTXT"
+        app:layout_constraintTop_toTopOf="@+id/textView_NomTXT" />
+
+    <TextView
+        android:id="@+id/textView_RoundTXT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tour : "
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_RoundValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_RoundTXT"
+        app:layout_constraintStart_toEndOf="@+id/textView_RoundTXT" />
+
+    <ImageView
+        android:id="@+id/imageView_Stone"
+        android:layout_width="101dp"
+        android:layout_height="105dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView_Leaf"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pierre" />
+
+    <ImageView
+        android:id="@+id/imageView_Leaf"
+        android:layout_width="133dp"
+        android:layout_height="89dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView_Scissors"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageView_Stone"
+        app:layout_constraintTop_toTopOf="@+id/imageView_Stone"
+        app:srcCompat="@drawable/feuille" />
+
+    <ImageView
+        android:id="@+id/imageView_Scissors"
+        android:layout_width="161dp"
+        android:layout_height="74dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageView_Leaf"
+        app:layout_constraintTop_toTopOf="@+id/imageView_Leaf"
+        app:srcCompat="@drawable/ciseaux" />
+
+    <TextView
+        android:id="@+id/textView_ScoreP1TXT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Score Joueur 1 : "
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_RoundTXT" />
+
+    <TextView
+        android:id="@+id/textView_ScoreP2TXT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Score Joueur 2 : "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_ScoreP1TXT" />
+
+    <TextView
+        android:id="@+id/textView_ScoreP1Now"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintStart_toEndOf="@+id/textView_ScoreP1TXT"
+        app:layout_constraintTop_toTopOf="@+id/textView_ScoreP1TXT" />
+
+    <TextView
+        android:id="@+id/textView_ScoreP2Now"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintStart_toEndOf="@+id/textView_ScoreP2TXT"
+        app:layout_constraintTop_toBottomOf="@+id/textView_ScoreP1TXT" />
+</androidx.constraintlayout.widget.ConstraintLayout>
