@@ -3,8 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
     tools:context=".GameActivity">
+
+    <ImageView
+        android:id="@+id/imageView_player2"
+        android:layout_width="70dp"
+        android:layout_height="72dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_player"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/textView_ScoreTXT"
@@ -120,4 +128,49 @@
         android:text="0"
         app:layout_constraintStart_toEndOf="@+id/textView_ScoreP2TXT"
         app:layout_constraintTop_toBottomOf="@+id/textView_ScoreP1TXT" />
+
+    <Button
+        android:id="@+id/button_newGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rejouer"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_NomTXT"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonStop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="Abandon"
+        app:layout_constraintBottom_toBottomOf="@+id/button_newGame"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView_player"
+        android:layout_width="70dp"
+        android:layout_height="72dp"
+        android:layout_marginBottom="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_newGame"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_player"
+        app:layout_constraintEnd_toStartOf="@+id/imageView_player2"
+        app:layout_constraintStart_toEndOf="@+id/imageView_player"
+        app:layout_constraintTop_toTopOf="@+id/imageView_player" />
+
+    <Button
+        android:id="@+id/button_quit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quitter"
+        app:layout_constraintBottom_toBottomOf="@+id/button_newGame"
+        app:layout_constraintEnd_toStartOf="@+id/buttonStop"
+        app:layout_constraintStart_toEndOf="@+id/button_newGame"
+        app:layout_constraintTop_toTopOf="@+id/button_newGame" />
 </androidx.constraintlayout.widget.ConstraintLayout>

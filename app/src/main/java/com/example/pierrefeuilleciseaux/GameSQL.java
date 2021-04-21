@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class GameSQL extends SQLiteOpenHelper {
 
     private final static String DB_NAME = "game.db";
-    private final static int DB_VERSION = 1;
+    private final static int DB_VERSION = 3;
 
 
     public GameSQL(Context context) {
@@ -20,6 +20,7 @@ public class GameSQL extends SQLiteOpenHelper {
         String CREATE_TABLE = "CREATE TABLE Game(" +
                 "idPlayer INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "namePlayer TEXT," +
+                "gamePlayer INTEGER," +
                 "scorePlayer INTEGER)";
         db.execSQL(CREATE_TABLE);
     }
@@ -30,42 +31,43 @@ public class GameSQL extends SQLiteOpenHelper {
     }
 
     /**
-     * get player score
+     * get player
      * @param playerName
      * @return
      */
-    public int getScore(String playerName) {
-        Cursor cursor = getWritableDatabase().rawQuery("SELECT * FROM Game", null);
+    public Player getPlayer(String playerName) {
+        Cursor cursor = getReadableDatabase().rawQuery("SELECT * FROM Game", null);
         if (cursor.moveToFirst()) {
             do {
                 String name = cursor.getString(cursor.getColumnIndex("namePlayer"));
                 int score = cursor.getInt(cursor.getColumnIndex("scorePlayer"));
+                int numberGame = cursor.getInt(cursor.getColumnIndex("gamePlayer"));
                 if (name.equals(playerName)) {
-                    return score;
+                    return new Player(name,score,numberGame);
                 }
             } while (cursor.moveToNext());
         }
-        return 0;
+        return new Player(playerName);
     }
 
+
     /**
-     * Update or insert player score if exist or not
-     * @param playerName
-     * @param playerScore
+     * Insert or update player
+     * @param player
      */
-    public void insertOrUpdatePlayer(String playerName, int playerScore) {
+    public void insertOrUpdatePlayer(Player player) {
         Cursor cursor = getWritableDatabase().rawQuery("SELECT * FROM Game", null);
         if (cursor.moveToFirst()) {
             do {
                 String name = cursor.getString(cursor.getColumnIndex("namePlayer"));
-                if (name.equals(playerName)) {
-                    update(playerName, playerScore);
+                if (name.equals(player.getName())) {
+                    update(player);
                     return;
                 }
             } while (cursor.moveToNext());
         }
 
-        insert(playerName, playerScore);
+        insert(player);
     }
 
     /**
@@ -80,24 +82,23 @@ public class GameSQL extends SQLiteOpenHelper {
 
 
     /**
-     * Insert value
+     * Insert player on database
      * @param player
-     * @param score
      */
-    private void insert(String player, int score) {
-        String REQUEST = "INSERT INTO Game (namePlayer,scorePlayer) VALUES(?,?)";
-        Object[] args = {player, score};
+    private void insert(Player player) {
+        String REQUEST = "INSERT INTO Game (namePlayer,scorePlayer,gamePlayer) VALUES(?,?,?)";
+        Object[] args = {player.getName(), player.getScore(),player.getNumberGame()};
         this.getWritableDatabase().execSQL(REQUEST, args);
     }
 
+
     /**
-     * Update value
+     * update player on database
      * @param player
-     * @param score
      */
-    private void update(String player, int score) {
-        String REQUEST = "UPDATE Game SET scorePlayer=? WHERE namePlayer=?";
-        Object[] args = {score, player};
+    private void update(Player player) {
+        String REQUEST = "UPDATE Game SET scorePlayer=? , gamePlayer=? WHERE namePlayer=?";
+        Object[] args = {player.getScore(), player.getNumberGame(),player.getName()};
         this.getWritableDatabase().execSQL(REQUEST, args);
     }
 }

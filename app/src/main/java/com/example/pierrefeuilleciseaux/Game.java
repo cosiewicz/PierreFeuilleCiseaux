@@ -43,18 +43,16 @@ public class Game {
      * @param p1Choice
      * @param p2Choice
      */
-    public void play(int p1Choice,int p2Choice){
+    public int play(int p1Choice,int p2Choice){
 
         if(gameResult[p1Choice][p2Choice]==1){
             player1Score++;
-            player2Score--;
-
         }
         else if(gameResult[p1Choice][p2Choice]==-1) {
-            player1Score--;
             player2Score++;
-
         }
+
+        return gameResult[p1Choice][p2Choice];
     }
 
     /**

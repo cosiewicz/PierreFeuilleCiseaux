@@ -19,6 +19,7 @@ public class ScoreAdapter extends RecyclerView.Adapter<ScoreAdapter.ScoreViewHol
     public ScoreAdapter(Context context, Cursor cursor) {
         this.context = context;
         this.cursor = cursor;
+
     }
 
     public void setCursor(Cursor cursor) {
@@ -39,8 +40,14 @@ public class ScoreAdapter extends RecyclerView.Adapter<ScoreAdapter.ScoreViewHol
     @Override
     public void onBindViewHolder(@NonNull ScoreViewHolder holder, int position) {
         cursor.moveToPosition(position);
-        holder.tv_score.setText(String.valueOf(cursor.getInt(cursor.getColumnIndex("scorePlayer"))));
         holder.tv_name.setText(cursor.getString(cursor.getColumnIndex("namePlayer")));
+        int game= cursor.getInt(cursor.getColumnIndex("gamePlayer"));
+        int avg = 0;
+        if(game>0){
+            avg =(cursor.getInt(cursor.getColumnIndex("scorePlayer")))/game;
+        }
+        holder.tv_match.setText(String.valueOf(game));
+        holder.tv_score.setText(String.valueOf(avg));
     }
 
     @Override
@@ -51,12 +58,14 @@ public class ScoreAdapter extends RecyclerView.Adapter<ScoreAdapter.ScoreViewHol
     public class ScoreViewHolder extends RecyclerView.ViewHolder {
         private TextView tv_name;
         private TextView tv_score;
-
+        private TextView tv_match;
 
         public ScoreViewHolder(@NonNull View itemView) {
             super(itemView);
             tv_name = itemView.findViewById(R.id.textView_NameScoreList);
+            tv_match = itemView.findViewById(R.id.textView_MatcheList);
             tv_score = itemView.findViewById(R.id.textView_ScoreList);
+
         }
     }
 }

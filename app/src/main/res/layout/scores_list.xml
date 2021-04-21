@@ -8,17 +8,17 @@
 
     <TextView
         android:id="@+id/textView_NameScoreList"
-        android:layout_width="280dp"
+        android:layout_width="171dp"
         android:layout_height="58dp"
-        android:text="TextView"
-        android:gravity="center"
-        android:textSize="20dp"
         android:background="@color/design_default_color_secondary"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView_ScoreList"
+        android:id="@+id/textView_MatcheList"
         android:layout_width="133dp"
         android:layout_height="58dp"
         android:text="TextView"
@@ -26,5 +26,15 @@
         android:gravity="center"
         android:background="@color/design_default_color_secondary_variant"
         app:layout_constraintStart_toEndOf="@+id/textView_NameScoreList"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_ScoreList"
+        android:layout_width="106dp"
+        android:layout_height="58dp"
+        android:gravity="center"
+        android:background="@color/design_default_color_secondary_variant"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/textView_MatcheList"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

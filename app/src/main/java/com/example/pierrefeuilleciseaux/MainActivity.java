@@ -28,10 +28,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onValidate(String value) {
             if(value.length()>0){
-                int score = gameSQL.getScore(value);
+                Player player = gameSQL.getPlayer(value);
                 Intent intent = new Intent(getBaseContext(),GameActivity.class);
-                intent.putExtra("playerName",value);
-                intent.putExtra("playerScore",score);
+                intent.putExtra("player",player);
                 startActivity(intent);
             }
             else{
